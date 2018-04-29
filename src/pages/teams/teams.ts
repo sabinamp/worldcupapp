@@ -4,6 +4,7 @@ import {IonicPage, NavController} from 'ionic-angular';
 
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from "rxjs/Observable";
+import {TeamdetailsPage} from "../teamdetails/teamdetails";
 
 /**
  * Generated class for the TeamsPage page.
@@ -31,8 +32,8 @@ export class TeamsPage {
     console.log('ionViewDidLoad TeamsPage');
   }
 
-  showOptions(teamId) {
-
+  onClick(team) {
+    this.navCtrl.push(TeamdetailsPage, team);
   }
 
 }

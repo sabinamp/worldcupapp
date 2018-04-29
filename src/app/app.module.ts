@@ -7,6 +7,7 @@ import { StadiumsPage } from '../pages/stadiums/stadiums';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { GroupsPage} from "../pages/groups/groups";
+import { FavoritesPage} from "../pages/favorites/favorites";
 
 // Import the AF2 Module
 import {HttpModule} from "@angular/http";
@@ -17,6 +18,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {TeamsPage} from "../pages/teams/teams";
+import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {TeamsPage} from "../pages/teams/teams";
     HomePage,
     TabsPage,
     GroupsPage,
-    TeamsPage
+    TeamsPage,
+    TeamdetailsPage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,
@@ -41,8 +45,10 @@ import {TeamsPage} from "../pages/teams/teams";
     StadiumsPage,
     HomePage,
     TeamsPage,
+    TeamdetailsPage,
     TabsPage,
-    GroupsPage
+    GroupsPage,
+    FavoritesPage
   ],
   providers: [
     StatusBar,

@@ -8,14 +8,19 @@
   <ion-navbar>
     <ion-title>Teams</ion-title>
   </ion-navbar>
+
+  <ion-searchbar></ion-searchbar>
+
 </ion-header>
 
 <ion-content padding>
 
   <ion-list>
-    <ion-item *ngFor="let team of teams | async" (click)="showOptions(team.id)">
+    <button ion-item *ngFor="let team of teams | async" (click)="onClick(team)">
+      <img width="20" height="20" src="./assets/imgs/flags/32/{{team.name}}.png">
       {{team.name}}
-    </ion-item>
+    </button>
+
   </ion-list>
 
 </ion-content>
