@@ -1,3 +1,12 @@
+# Important!:
+## develop branch:
+i created a `develop branch` with the latest status of the project including the firebase integration.
+
+If we want we can make a branch for everybody so that we can merge the work to the `develop branch` once a new 'release' is ready to be delivered
+
+## Resolve possible dependencies bugs when running `ionic serve`
+run `npm install` for updating the dependencies list of the package.json file. I included a firebase peer dependency to temporary solve a bug of the last angularfire2 release *"angularfire2": "^5.0.0-rc.6.0"*"
+
 # worldcupapp
 App to display information about the WC 2018 using Ionic 3 framework
 
