@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>groupsPage</ion-title>
+    <ion-title>Groups</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-card *ngFor="let group of firebaseService.groups | async">
+    <h1>Group x</h1>
+    <ion-item *ngFor="let match of firebaseService.getMatches(group)">
+      <h2>Match</h2>
+      <h3>Away team: {{match.away_team}}</h3>
+      <h3>Home team: {{match.home_team}}</h3>
+      <h3>Stadium: {{match.stadium}}</h3>
 
+    </ion-item>
+  </ion-card>
 </ion-content>

@@ -18,7 +18,6 @@ import {FirebaseService} from "../../app/firebase-service";
 })
 export class TeamsPage {
   firebaseService: FirebaseService;
-
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
     this.firebaseService = new FirebaseService(angularFireDatabase);
   }

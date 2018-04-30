@@ -1,15 +1,17 @@
 //TODO: Write abstract methods for Firebase CRUD operations
 import {AngularFireDatabase, AngularFireList, PathReference} from 'angularfire2/database';
 import {Observable} from "rxjs/Observable";
+import {Group} from "./model/group";
+import {Team} from "./model/team";
 
 export class FirebaseService {
   //Teams
   teamsRef: AngularFireList<any>;
-  teams: Observable<any[]>;
+  teams: Observable<Team[]>;
 
   //Groups
   groupsRef: AngularFireList<any>;
-  groups: Observable<any[]>;
+  groups: Observable<Group[]>;
 
   //Stadiums
   stadiumsRef: AngularFireList<any>;
@@ -29,9 +31,14 @@ export class FirebaseService {
     this.teams = this.teamsRef.valueChanges();
   }
 
+
   initializeGroups() {
     this.groupsRef = this.getFBReferenceList('/groups');
     this.groups = this.groupsRef.valueChanges();
+  }
+
+  getMatches(group: Group) {
+    return group.matches;
   }
 
   initializeStadiums() {
@@ -41,5 +48,11 @@ export class FirebaseService {
 
   getFBReferenceList(path: PathReference) {
     return this.angularFireDatabase.list(path);
+  }
+
+  getArrayOfKeys(observabeList: Observable<any[]>) {
+    var keys = [];
+    for (var k in observabeList) keys.push(k);
+    return keys;
   }
 }

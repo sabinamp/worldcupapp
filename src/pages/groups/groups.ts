@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, List, NavController, NavParams} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
+import {FirebaseService} from "../../app/firebase-service";
 
 
 /**
@@ -19,19 +20,17 @@ import {TeamdetailsPage} from "../teamdetails/teamdetails";
 })
 export class GroupsPage {
 
-
-
+  firebaseService: FirebaseService;
+  groupKeys: Array<any>;
 
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
-
+    this.firebaseService = new FirebaseService(angularFireDatabase);
+    this.groupKeys = this.firebaseService.getArrayOfKeys(this.firebaseService.groups)
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamsPage');
-  }
 
   onClick(team) {
-    this.navCtrl.push(TeamdetailsPage, team);
+    // this.navCtrl.push(TeamdetailsPage, team);
   }
 
 }
