@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Observable} from "rxjs/Observable";
+import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
+import {TeamdetailsPage} from "../teamdetails/teamdetails";
 
 
 /**
@@ -16,11 +19,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class GroupsPage {
 
-  constructor(public navCtrl: NavController) {
+
+  groupsRef: AngularFireList<any>;
+  groups: Observable<any[]>;
+
+
+  constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
+    this.groupsRef = angularFireDatabase.list('groups');
+    this.groups = this.groupsRef.valueChanges();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad GroupsPage');
+    console.log('ionViewDidLoad TeamsPage');
+  }
+
+  onClick(team) {
+    this.navCtrl.push(TeamdetailsPage, team);
   }
 
 }

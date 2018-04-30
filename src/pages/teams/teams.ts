@@ -7,10 +7,7 @@ import {Observable} from "rxjs/Observable";
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
 
 /**
- * Generated class for the TeamsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * TeamsPage page.
  */
 
 @IonicPage()
@@ -22,10 +19,11 @@ export class TeamsPage {
 
   teamsRef: AngularFireList<any>;
   teams: Observable<any[]>;
+  private angularFireDatabase: any;
 
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
-    this.teamsRef = angularFireDatabase.list('teams');
-    this.teams = this.teamsRef.valueChanges();
+    this.angularFireDatabase = angularFireDatabase;
+    this.initializeTeams();
   }
 
   ionViewDidLoad() {
@@ -36,4 +34,26 @@ export class TeamsPage {
     this.navCtrl.push(TeamdetailsPage, team);
   }
 
+
+  private initializeTeams() {
+    this.teamsRef = this.angularFireDatabase.list('teams');
+    this.teams = this.teamsRef.valueChanges();
+  }
+
+  getItems(searchInput: any) {
+    // Reset team list back with all the firebase items
+    this.initializeTeams();
+
+    // set valueToCompare to the value of the searchbar
+    let valueToCompare = searchInput.target.value;
+
+    // if valueToCompare is empty it will don't filter the teams
+    if (valueToCompare && valueToCompare.trim() != '') {
+      this.teams = this.teams
+        .map((teams) => teams
+          .filter((team) => {
+            return (team.name.toLowerCase().indexOf(valueToCompare.toLowerCase()) > -1);
+          }));
+    }
+  }
 }
