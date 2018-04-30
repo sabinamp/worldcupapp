@@ -5,6 +5,7 @@ import {IonicPage, NavController} from 'ionic-angular';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from "rxjs/Observable";
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
+import {FirebaseService} from "../../app/firebase-service";
 
 /**
  * TeamsPage page.
@@ -16,44 +17,31 @@ import {TeamdetailsPage} from "../teamdetails/teamdetails";
   templateUrl: 'teams.html',
 })
 export class TeamsPage {
-
-  teamsRef: AngularFireList<any>;
-  teams: Observable<any[]>;
-  private angularFireDatabase: any;
+  firebaseService: FirebaseService;
 
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
-    this.angularFireDatabase = angularFireDatabase;
-    this.initializeTeams();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamsPage');
+    this.firebaseService = new FirebaseService(angularFireDatabase);
   }
 
   onClick(team) {
     this.navCtrl.push(TeamdetailsPage, team);
   }
 
-
-  private initializeTeams() {
-    this.teamsRef = this.angularFireDatabase.list('teams');
-    this.teams = this.teamsRef.valueChanges();
-  }
-
-  getItems(searchInput: any) {
+  searchItems(searchInput: any) {
     // Reset team list back with all the firebase items
-    this.initializeTeams();
+    this.firebaseService.initializeTeams();
 
     // set valueToCompare to the value of the searchbar
     let valueToCompare = searchInput.target.value;
 
     // if valueToCompare is empty it will don't filter the teams
     if (valueToCompare && valueToCompare.trim() != '') {
-      this.teams = this.teams
+      this.firebaseService.teams = this.firebaseService.teams
         .map((teams) => teams
           .filter((team) => {
             return (team.name.toLowerCase().indexOf(valueToCompare.toLowerCase()) > -1);
           }));
     }
   }
+
 }

@@ -20,13 +20,10 @@ import {TeamdetailsPage} from "../teamdetails/teamdetails";
 export class GroupsPage {
 
 
-  groupsRef: AngularFireList<any>;
-  groups: Observable<any[]>;
 
 
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
-    this.groupsRef = angularFireDatabase.list('groups');
-    this.groups = this.groupsRef.valueChanges();
+
   }
 
   ionViewDidLoad() {
