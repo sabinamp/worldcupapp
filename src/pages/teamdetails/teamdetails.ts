@@ -20,7 +20,7 @@ export class TeamdetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TeamdetailsPage');
+    console.log('TeamdetailsPage Started');
   }
 
 }

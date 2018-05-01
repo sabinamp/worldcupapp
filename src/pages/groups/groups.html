@@ -16,37 +16,48 @@
 <ion-content padding>
   <ion-card *ngFor="let group of firebaseService.groups | async">
     <h1 text-center text-capitalize>Group {{group.key}}</h1>
-
-    <ion-row text-center>
-      <ion-col>
-        Away Team
-      </ion-col>
-
-      <ion-col>
-
-      </ion-col>
-
-      <ion-col>
-        Home Team
-      </ion-col>
-
-    </ion-row>
-
-    <ion-grid *ngFor="let match of group.matches">
+    <ion-grid>
       <ion-row text-center>
         <ion-col>
-          {{match.away_team}}
-          <ion-item *ngFor="let awayteam of firebaseService.getTeamById(match.away_team)">
-            {{awayteam.name}}
-          </ion-item>
+          <h2>Away Team</h2>
+        </ion-col>
+
+        <ion-col>
+
+        </ion-col>
+
+        <ion-col>
+          <h2>Home Team</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngFor="let match of group.matches">
+      <ion-row text-center>
+        <ion-col *ngFor="let team of firebaseService.getTeamById(match.away_team)">
+
+          <h3>{{team.name}}</h3>
+          <img width="20" height="20" src="./assets/imgs/flags/32/{{team.name}}.png">
+
         </ion-col>
 
         <ion-col>
           vs.
         </ion-col>
 
+        <ion-col *ngFor="let team of firebaseService.getTeamById(match.home_team)">
+          <h3>{{team.name}}</h3>
+          <img width="20" height="20" src="./assets/imgs/flags/32/{{team.name}}.png">
+        </ion-col>
+      </ion-row>
+
+      <ion-row text-center>
+
         <ion-col>
-          {{match.home_team}}
+          <div style="white-space:nowrap;">
+            <ion-label style="display:inline-block; text-align:center;"><strong>Date: </strong></ion-label>
+            <ion-datetime style="display:inline-block;" displayFormat="MMM DD, YYYY HH:mm"
+                          [(ngModel)]="match.date"></ion-datetime>
+          </div>
         </ion-col>
       </ion-row>
 
