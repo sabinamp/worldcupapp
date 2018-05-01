@@ -2,8 +2,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 
-import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
-import {Observable} from "rxjs/Observable";
+import {AngularFireDatabase} from 'angularfire2/database';
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
 import {FirebaseService} from "../../app/firebase-service";
 

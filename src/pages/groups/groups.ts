@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
-import {IonicPage, List, NavController, NavParams} from 'ionic-angular';
-import {Observable} from "rxjs/Observable";
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
-import {TeamdetailsPage} from "../teamdetails/teamdetails";
+import {IonicPage, NavController} from 'ionic-angular';
+import {AngularFireDatabase} from "angularfire2/database";
+
 import {FirebaseService} from "../../app/firebase-service";
 
 
@@ -26,11 +25,6 @@ export class GroupsPage {
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
     this.firebaseService = new FirebaseService(angularFireDatabase);
     this.groupKeys = this.firebaseService.getArrayOfKeys(this.firebaseService.groups)
-  }
-
-
-  onClick(team) {
-    // this.navCtrl.push(TeamdetailsPage, team);
   }
 
 }
