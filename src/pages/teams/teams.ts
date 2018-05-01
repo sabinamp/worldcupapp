@@ -2,9 +2,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 
-import {AngularFireDatabase} from 'angularfire2/database';
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
 import {FirebaseService} from "../../app/firebase-service";
+import {AngularFirestore} from "angularfire2/firestore";
 
 /**
  * TeamsPage page.
@@ -17,7 +17,7 @@ import {FirebaseService} from "../../app/firebase-service";
 })
 export class TeamsPage {
   firebaseService: FirebaseService;
-  constructor(public navCtrl: NavController, angularFireDatabase: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
     this.firebaseService = new FirebaseService(angularFireDatabase);
   }
 

@@ -12,11 +12,10 @@ import { FavoritesPage} from "../pages/favorites/favorites";
 // Import the AF2 Module
 import {HttpModule} from "@angular/http";
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {FIREBASE_CONFIG} from "./firebase.credentials";
+import {AngularFirestore, AngularFirestoreModule} from "angularfire2/firestore";
 import {TeamsPage} from "../pages/teams/teams";
 import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 
@@ -30,14 +29,14 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
     GroupsPage,
     TeamsPage,
     TeamdetailsPage,
-    FavoritesPage
+    FavoritesPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule
+    AngularFirestoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +52,8 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AngularFirestore
   ]
 })
 export class AppModule {}

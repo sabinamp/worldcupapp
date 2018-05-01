@@ -1,41 +1,56 @@
 //TODO: Write abstract methods for Firebase CRUD operations
-import {AngularFireDatabase, AngularFireList, PathReference} from 'angularfire2/database';
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
 import {Group} from "./model/group";
-import {Team} from "./model/team";
+import {Team, TeamId} from "./model/team";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class FirebaseService {
   //Teams
-  teamsRef: AngularFireList<any>;
-  teams: Observable<Team[]>;
+  teamsRef: AngularFirestoreCollection<Team>;
+  teams: Observable<TeamId[]>;
 
   //Groups
-  groupsRef: AngularFireList<any>;
-  groups: Observable<Group[]>;
+  groupsRef: AngularFirestoreCollection<any>;
+  groups: Observable<any[]>;
 
   //Stadiums
-  stadiumsRef: AngularFireList<any>;
+  stadiumsRef: AngularFirestoreCollection<any>;
   stadiums: Observable<any[]>;
 
-  angularFireDatabase: AngularFireDatabase;
+  angularFireStore: AngularFirestore;
 
-  constructor(angularFireDatabase: AngularFireDatabase) {
-    this.angularFireDatabase = angularFireDatabase
+  constructor(angularFireStore: AngularFirestore) {
+    this.angularFireStore = angularFireStore;
+    angularFireStore.firestore.settings({ timestampsInSnapshots: true });
     this.initializeTeams();
     this.initializeStadiums();
     this.initializeGroups();
   }
 
   initializeTeams() {
-    this.teamsRef = this.getFBReferenceList('/teams');
-    this.teams = this.teamsRef.valueChanges();
+    this.teamsRef = this.angularFireStore.collection<Team>('/teams');
+    this.teams = this.teamsRef.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Team;
+        const key = a.payload.doc.id;
+        return { key, ...data };
+      });
+    });
+    this.teams.subscribe(data=> console.log(data));
   }
-
 
   initializeGroups() {
-    this.groupsRef = this.getFBReferenceList('/groups');
-    this.groups = this.groupsRef.valueChanges();
-  }
+  this.groupsRef = this.angularFireStore.collection<Group>('/groups');
+  this.groups = this.teamsRef.snapshotChanges().map(actions => {
+    return actions.map(a => {
+      const data = a.payload.doc.data() as Group;
+      const key = a.payload.doc.id;
+      return { key, ...data };
+    });
+  });
+}
 
   getMatches(group: Group) {
     return group.matches;
@@ -46,8 +61,8 @@ export class FirebaseService {
     this.stadiums = this.stadiumsRef.valueChanges();
   }
 
-  getFBReferenceList(path: PathReference) {
-    return this.angularFireDatabase.list(path);
+  getFBReferenceList(path: string) {
+    return this.angularFireStore.collection(path);
   }
 
   getArrayOfKeys(observabeList: Observable<any[]>) {
