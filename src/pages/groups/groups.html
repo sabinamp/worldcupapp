@@ -15,13 +15,42 @@
 
 <ion-content padding>
   <ion-card *ngFor="let group of firebaseService.groups | async">
-    <h1>Group x</h1>
-    <ion-item *ngFor="let match of firebaseService.getMatches(group)">
-      <h2>Match</h2>
-      <h3>Away team: {{match.away_team}}</h3>
-      <h3>Home team: {{match.home_team}}</h3>
-      <h3>Stadium: {{match.stadium}}</h3>
+    <h1 text-center text-capitalize>Group {{group.key}}</h1>
 
-    </ion-item>
+    <ion-row text-center>
+      <ion-col>
+        Away Team
+      </ion-col>
+
+      <ion-col>
+
+      </ion-col>
+
+      <ion-col>
+        Home Team
+      </ion-col>
+
+    </ion-row>
+
+    <ion-grid *ngFor="let match of group.matches">
+      <ion-row text-center>
+        <ion-col>
+          {{match.away_team}}
+          <ion-item *ngFor="let awayteam of firebaseService.getTeamById(match.away_team)">
+            {{awayteam.name}}
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          vs.
+        </ion-col>
+
+        <ion-col>
+          {{match.home_team}}
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
   </ion-card>
 </ion-content>
