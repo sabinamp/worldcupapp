@@ -1,11 +1,9 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
-import {AngularFireDatabase} from "angularfire2/database";
 
 import {FirebaseService} from "../../app/firebase-service";
-import {AngularFirestore} from "angularfire2/firestore";
 import {Team, TeamId} from "../../app/model/team";
-import {Observable} from "rxjs/Observable";
+import {AngularFirestore} from "angularfire2/firestore";
 
 
 /**
@@ -25,8 +23,8 @@ export class GroupsPage {
   firebaseService: FirebaseService;
   teams: Array<Team>
 
-  constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
-    this.firebaseService = new FirebaseService(angularFireDatabase);
+  constructor(public navCtrl: NavController, angularFirestore: AngularFirestore) {
+    this.firebaseService = new FirebaseService(angularFirestore);
 
   }
 }

@@ -17,8 +17,8 @@ import {AngularFirestore} from "angularfire2/firestore";
 })
 export class TeamsPage {
   firebaseService: FirebaseService;
-  constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
-    this.firebaseService = new FirebaseService(angularFireDatabase);
+  constructor(public navCtrl: NavController, angularFirestore: AngularFirestore) {
+    this.firebaseService = new FirebaseService(angularFirestore);
   }
 
   onClick(team) {

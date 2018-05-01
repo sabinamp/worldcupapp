@@ -1,10 +1,9 @@
 //TODO: Write abstract methods for Firebase CRUD operations
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
+import {AngularFirestore, AngularFirestoreCollection} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
 import {Group} from "./model/group";
 import {Team, TeamId} from "./model/team";
 import {Injectable} from "@angular/core";
-import {Pro} from "@ionic/pro";
 
 @Injectable()
 export class FirebaseService {
@@ -25,7 +24,7 @@ export class FirebaseService {
 
   constructor(angularFireStore: AngularFirestore) {
     this.angularFireStore = angularFireStore;
-    angularFireStore.firestore.settings({timestampsInSnapshots: true});
+    this.angularFireStore.firestore.settings({timestampsInSnapshots: true});
     this.initializeTeams();
     this.initializeStadiums();
     this.initializeGroups();

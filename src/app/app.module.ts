@@ -1,23 +1,24 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
+import {NgModule, ErrorHandler} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {MyApp} from './app.component';
 
-import { StadiumsPage } from '../pages/stadiums/stadiums';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { GroupsPage} from "../pages/groups/groups";
-import { FavoritesPage} from "../pages/favorites/favorites";
+import {StadiumsPage} from '../pages/stadiums/stadiums';
+import {HomePage} from '../pages/home/home';
+import {TabsPage} from '../pages/tabs/tabs';
+import {GroupsPage} from "../pages/groups/groups";
+import {FavoritesPage} from "../pages/favorites/favorites";
 
 // Import the AF2 Module
-import {HttpModule} from "@angular/http";
-import { AngularFireModule } from 'angularfire2';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {AngularFireModule} from 'angularfire2';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 import {FIREBASE_CONFIG} from "./firebase.credentials";
-import {AngularFirestore, AngularFirestoreModule} from "angularfire2/firestore";
+import {AngularFirestoreModule} from "angularfire2/firestore";
 import {TeamsPage} from "../pages/teams/teams";
 import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
+import {CoreModule} from "./core/core.module";
+import {UserProfilePage} from "../pages/user-profile/user-profile";
 
 
 @NgModule({
@@ -30,13 +31,14 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
     TeamsPage,
     TeamdetailsPage,
     FavoritesPage,
+    UserProfilePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFirestoreModule
+    CoreModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,13 +49,14 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
     TeamdetailsPage,
     TabsPage,
     GroupsPage,
-    FavoritesPage
+    FavoritesPage,
+    UserProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFirestore
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
