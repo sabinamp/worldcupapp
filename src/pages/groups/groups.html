@@ -1,0 +1,67 @@
+<!--
+  Generated template for the GroupsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Groups</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let group of firebaseService.groups | async">
+    <h1 text-center text-capitalize>Group {{group.key}}</h1>
+    <ion-grid>
+      <ion-row text-center>
+        <ion-col>
+          <h2>Away Team</h2>
+        </ion-col>
+
+        <ion-col>
+
+        </ion-col>
+
+        <ion-col>
+          <h2>Home Team</h2>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngFor="let match of group.matches">
+      <ion-row text-center>
+        <ion-col *ngFor="let team of firebaseService.getTeamById(match.away_team)">
+
+          <h3>{{team.name}}</h3>
+          <img width="20" height="20" src="./assets/imgs/flags/32/{{team.name}}.png">
+
+        </ion-col>
+
+        <ion-col>
+          vs.
+        </ion-col>
+
+        <ion-col *ngFor="let team of firebaseService.getTeamById(match.home_team)">
+          <h3>{{team.name}}</h3>
+          <img width="20" height="20" src="./assets/imgs/flags/32/{{team.name}}.png">
+        </ion-col>
+      </ion-row>
+
+      <ion-row text-center>
+
+        <ion-col>
+          <div style="white-space:nowrap;">
+            <ion-label style="display:inline-block; text-align:center;"><strong>Date: </strong></ion-label>
+            <ion-datetime style="display:inline-block;" displayFormat="MMM DD, YYYY HH:mm"
+                          [(ngModel)]="match.date"></ion-datetime>
+          </div>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+
+  </ion-card>
+</ion-content>
