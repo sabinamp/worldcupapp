@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {Group} from "./model/group";
 import {Team, TeamId} from "./model/team";
 import {Injectable} from "@angular/core";
+import {Stadium} from "./model/stadium";
 //import {Pro} from "@ionic/pro";
 
 @Injectable()
@@ -29,7 +30,6 @@ export class FirebaseService {
     this.initializeTeams();
     this.initializeStadiums();
     this.initializeGroups();
-    console.log(this.teamArray);
   }
 
   initializeTeams() {
@@ -70,19 +70,30 @@ export class FirebaseService {
   getMatches(group: Group) {
     return group.matches;
   }
-
-  initializeStadiums() {
+  initializeStadiums(){
+    this.stadiumsRef = this.angularFireStore.collection<Stadium>("/stadiums");
+    this.stadiums = this.stadiumsRef.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as Stadium;
+        const key = a.payload.doc.id;
+        return {key, ...data};
+      });
+    });
+  }
+ /*  initializeStadiums() {
     this.stadiumsRef = this.getFBReferenceList('/stadiums');
     this.stadiums = this.stadiumsRef.valueChanges();
-  }
+  } 
 
   getFBReferenceList(path: string) {
     return this.angularFireStore.collection(path);
-  }
-
-  getArrayOfKeys(observabeList: Observable<any[]>) {
+  }*/
+getStadiums(){
+  return this.stadiums;
+}
+  getArrayOfKeys(observableList: Observable<any[]>) {
     var keys = [];
-    for (var k in observabeList) keys.push(k);
+    for (var k in observableList) keys.push(k);
     return keys;
   }
 }
