@@ -4,7 +4,7 @@ import {Observable} from "rxjs/Observable";
 import {Group} from "./model/group";
 import {Team, TeamId} from "./model/team";
 import {Injectable} from "@angular/core";
-import {Pro} from "@ionic/pro";
+//import {Pro} from "@ionic/pro";
 
 @Injectable()
 export class FirebaseService {
