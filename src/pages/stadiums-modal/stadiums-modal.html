@@ -7,15 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Stadium Photo</ion-title>
+    <ion-title>{{stadium.name}}</ion-title>
     <ion-buttons end>
-        <button ion-button (click)="closeModal()">Close</button>
+        <button ion-button outline secondary-medium color="secondary" (click)="closeModal()">Close</button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <img width="768" height="432" src="./assets/imgs/stadiums/{{stadium.id}}.jpg">
+  {{stadium.name}}
+  <p>{{stadium.id}}
 
+  </p>
 </ion-content>
