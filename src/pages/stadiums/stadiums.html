@@ -8,12 +8,13 @@
 
 <ion-content padding>
   <ion-list inset>
+    
     <ion-item *ngFor="let stadium of firebaseService.stadiums | async ">
-        <ion-icon name="globe" item-start></ion-icon>
+        <ion-icon name="football" item-start></ion-icon>
         <h2>{{stadium.name}}</h2> 
         <p>City: {{stadium.city}}</p>
-        <ion-icon name="image" item-end></ion-icon>
-    </ion-item>
-
+        
+        <button ion-button clear item-end><ion-icon name="image" item-end></ion-icon>View</button>
+    </ion-item>    
   </ion-list>
 </ion-content>

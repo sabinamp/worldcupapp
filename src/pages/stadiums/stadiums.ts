@@ -10,7 +10,7 @@ import {AngularFirestore} from "angularfire2/firestore";
 })
 export class StadiumsPage {
   firebaseService: FirebaseService;
-
+  
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
     this.firebaseService = new FirebaseService(angularFireDatabase);
   
@@ -18,5 +18,4 @@ export class StadiumsPage {
   ionViewDidLoad() {
     this.firebaseService.initializeStadiums();
   }
- 
 }
