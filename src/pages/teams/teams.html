@@ -2,8 +2,11 @@
   TeamsPage layout
 -->
 <ion-header>
-  <ion-navbar>
+  <ion-navbar  color="secondary">
     <ion-title>Teams</ion-title>
+    <button ion-button color="dark" menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
   </ion-navbar>
 
   <ion-searchbar (ionInput)="searchItems($event)"></ion-searchbar>

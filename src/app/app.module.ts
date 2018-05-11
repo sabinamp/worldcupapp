@@ -8,6 +8,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { GroupsPage} from "../pages/groups/groups";
 import { FavoritesPage} from "../pages/favorites/favorites";
+import {StadiumsModalPage} from "../pages/stadiums-modal/stadiums-modal";
 
 // Import the AF2 Module
 import {HttpModule} from "@angular/http";
@@ -29,7 +30,7 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
     GroupsPage,
     TeamsPage,
     TeamdetailsPage,
-    FavoritesPage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,

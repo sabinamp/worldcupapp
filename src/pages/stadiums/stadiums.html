@@ -1,8 +1,11 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>
       Stadiums
     </ion-title>
+    <button ion-button color="dark" menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +17,10 @@
         <h2>{{stadium.name}}</h2> 
         <p>City: {{stadium.city}}</p>
         
-        <button ion-button clear item-end><ion-icon name="image" item-end></ion-icon>View</button>
+        <button ion-button color="secondary" icon-left outline item-end (click)="openModal(stadium.name)">
+          <ion-icon name="image" item-end></ion-icon>
+        View
+      </button>
     </ion-item>    
   </ion-list>
 </ion-content>
