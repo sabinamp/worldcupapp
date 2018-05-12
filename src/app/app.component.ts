@@ -23,7 +23,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Teams', component: TeamsPage },
-      { title: 'Matches', component: GroupsPage },
+      { title: 'Group Matches', component: GroupsPage },
       { title: 'Stadiums', component: StadiumsPage },
       { title: 'Favourite Teams', component: FavoritesPage }
     ];

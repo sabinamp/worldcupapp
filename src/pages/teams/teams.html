@@ -18,7 +18,7 @@
   <ion-list inset>
     <button ion-item *ngFor="let team of firebaseService.teams | async" (click)="onClick(team)">
         <ion-avatar item-start>
-           <img width="24" height="24" src="./assets/imgs/flags/32/{{team.name}}.png">
+           <img width="28" height="24" src="./assets/imgs/flags/32/{{team.name}}.png">
         </ion-avatar>
       
         {{team.name}}

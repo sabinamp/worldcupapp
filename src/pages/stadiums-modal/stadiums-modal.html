@@ -6,10 +6,10 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <ion-title>{{stadium.name}}</ion-title>
     <ion-buttons end>
-        <button ion-button outline secondary-medium color="secondary" (click)="closeModal()">Close</button>
+        <button ion-button outline secondary-medium color="dark" (click)="closeModal()">Close</button>
     </ion-buttons>
   </ion-navbar>
 
@@ -17,6 +17,6 @@
 
 <ion-content padding>
   <img width="768" height="432" src="./assets/imgs/stadiums/{{stadium.id}}.jpg">
-  {{stadium.name}}
-  <p>Copyright Getty Images </p>
+  &copy; Getty Images 
+ <h2> {{stadium.name}}</h2>
 </ion-content>
