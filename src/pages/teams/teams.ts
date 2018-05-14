@@ -17,6 +17,7 @@ import {AngularFirestore} from "angularfire2/firestore";
 })
 export class TeamsPage {
   firebaseService: FirebaseService;
+
   constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
     this.firebaseService = new FirebaseService(angularFireDatabase);
   }
@@ -38,7 +39,11 @@ export class TeamsPage {
         .map((teams) => teams
           .filter((team) => {
             return (team.name.toLowerCase().indexOf(valueToCompare.toLowerCase()) > -1);
-          }));
+          }).sort(function (a, b) {
+            return a.name.toLowerCase().indexOf(valueToCompare.toLowerCase())
+            < b.name.toLowerCase().indexOf(valueToCompare.toLowerCase()) ? -1 : 1;
+          })
+        );
     }
   }
 

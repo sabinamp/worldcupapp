@@ -12,7 +12,7 @@ export class FirebaseService {
   //Teams
   teamsRef: AngularFirestoreCollection<Team>;
   teams: Observable<TeamId[]>;
-  teamArray: Array<Team>
+  teamArray: Array<Team>;
 
   //Groups
   groupsRef: AngularFirestoreCollection<any>;
@@ -33,7 +33,7 @@ export class FirebaseService {
   }
 
   initializeTeams() {
-    this.teamArray = new Array<Team>();
+    this.teamArray = [];
     this.teamsRef = this.angularFireStore.collection<Team>('/teams');
     this.teams = this.teamsRef.snapshotChanges().map(actions => {
       return actions.map(a => {
@@ -83,7 +83,7 @@ export class FirebaseService {
  /*  initializeStadiums() {
     this.stadiumsRef = this.getFBReferenceList('/stadiums');
     this.stadiums = this.stadiumsRef.valueChanges();
-  } 
+  }
 
   getFBReferenceList(path: string) {
     return this.angularFireStore.collection(path);
