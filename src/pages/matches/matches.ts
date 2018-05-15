@@ -22,4 +22,8 @@ export class MatchesPage {
     console.log('ionViewDidLoad MatchesPage');
   }
 
+  fixedGroupTitle(){
+
+  }
+
 }

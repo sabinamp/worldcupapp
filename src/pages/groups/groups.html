@@ -14,56 +14,38 @@
   </ion-navbar>
 
 </ion-header>
-
-
-<ion-content padding>
+<ion-content class="background">
   <ion-card *ngFor="let group of firebaseService.groups | async">
-    <h1 text-center text-capitalize>Group <strong>{{group.key}}</strong></h1>
-    <ion-grid>
-      <ion-row text-center>
-        <ion-col>
-          <h2><strong>Home Team</strong></h2>
-        </ion-col>
-
-        <ion-col>
-
-        </ion-col>
-
-        <ion-col>
-          <h2><strong>Away Team</strong></h2>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <h1 text-center text-capitalize class="group-title">Group <strong>{{group.key}}</strong></h1>
     <ion-grid class="match-grid" *ngFor="let match of group.matches">
       <ion-row text-center>
+        <ion-col class="border-line-bottom">
+          <div style="white-space:nowrap;">
+            <ion-datetime class="dateLabel" displayFormat="MMM DD, YYYY HH:mm"
+                          [(ngModel)]="match.date"></ion-datetime>
+            <label class="starts-in-label">{{substractDateLeft(match.date)}}</label>
 
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row text-center>
         <ion-col *ngFor="let team of firebaseService.getTeamById(match.home_team)">
+          <h2 class="starts-in-label"><strong>Home</strong></h2>
+          <img class="ion-team-flag" src="./assets/imgs/flags/48/{{team.name}}.png">
           <h3>{{team.name}}</h3>
-          <ion-thumbnail item-end class="ion-team-flag">
-            <img src="./assets/imgs/flags/32/{{team.name}}.png">
-          </ion-thumbnail>
+
         </ion-col>
         <ion-col id="vs-style">
           <strong>vs.</strong>
         </ion-col>
 
         <ion-col *ngFor="let team of firebaseService.getTeamById(match.away_team)">
-
+          <h2 starts-in-label class="starts-in-label"><strong>Away</strong></h2>
+          <img class="ion-team-flag" src="./assets/imgs/flags/48/{{team.name}}.png">
           <h3>{{team.name}}</h3>
-          <ion-thumbnail item-end class="ion-team-flag">
-            <img src="./assets/imgs/flags/32/{{team.name}}.png">
-          </ion-thumbnail>
         </ion-col>
       </ion-row>
 
-      <ion-row text-center>
-        <ion-col class="border-line-top">
-          <div style="white-space:nowrap;">
-            <ion-datetime displayFormat="MMM DD, YYYY HH:mm"
-                          [(ngModel)]="match.date"></ion-datetime>
-          </div>
-        </ion-col>
-      </ion-row>
     </ion-grid>
 
   </ion-card>
