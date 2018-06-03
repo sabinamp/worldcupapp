@@ -9,11 +9,21 @@
 
 <ion-content padding>
   
-  <img src="./assets/imgs/thomas-serer-431811-unsplash.jpg">
+  <img src="./assets/imgs/backgrounds/backgr.jpg">
   <!--Photo by Thomas Serer on Unsplash -->
-
-  <p>
+  
    <!-- TODO : Count down to 14 June 2018.-->
-  </p>
+   <div ng-controller="counterCtrl" class="ion-list list">
+    <h3 style="padding-left:1em">2018 Football World Cup </h3>
+   
+    <div class="item item-icon-left item-text-wrap" ng-show="positiveTime" ng-change="dateTimeStringChanged()" ng-model="countdownTextString">
+      <strong>Countdown to June 14 2018: 
+
+      </strong>{{finalTimeLeft}} </div>
+
+   
+
+
+  </div>
  
 </ion-content>
