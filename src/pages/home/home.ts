@@ -4,18 +4,22 @@ import { NavController } from 'ionic-angular';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
+  
 })
 export class HomePage {
 
+    //mydate: string = ''
+
   constructor(public navCtrl: NavController) {
-  
+    //this.mydate = "2018-06-14T17:00:00+05:00";
   }
 
-  counterfirstmatch(date) {
+  counterfirstmatch() {
     // 2018-06-14T17:00:00+05:00
   // get total seconds between the times
       var actualDate = new Date().getTime()
-      var futureDate = new Date(date)
+      var futureDate = new Date("June 14, 2018 17:00:00")
+      
       var delta = Math.abs(futureDate.getTime() - actualDate) / 1000;
   
   // calculate (and subtract) whole days
@@ -33,6 +37,7 @@ export class HomePage {
   // what's left is seconds
       var seconds = delta % 60;  // in theory the modulus is not required
   
-    return "First match starts in " + days + "d " + hours + "h " + minutes + "m " + seconds + "s "
+    return "Starts in " + days + " days " + hours + "h " + minutes + "m " 
+    //+ seconds + "s "
     }
   }
