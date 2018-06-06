@@ -19,6 +19,8 @@ import {FIREBASE_CONFIG} from "./firebase.credentials";
 import {AngularFirestore, AngularFirestoreModule} from "angularfire2/firestore";
 import {TeamsPage} from "../pages/teams/teams";
 import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
+import { FavoriteProvider } from '../providers/favorite/favorite';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -34,10 +36,11 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp),    
     HttpModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -54,7 +57,8 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFirestore
+    AngularFirestore,
+    FavoriteProvider
   ]
 })
 export class AppModule {}

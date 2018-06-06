@@ -8,7 +8,10 @@
 
   <ion-navbar color="secondary">
     <ion-title>{{team.name}}</ion-title>
-   
+    <ion-buttons end>
+      <button ion-button icon-only (click)="unfavoriteTeam()" *ngIf="isFavorite"><ion-icon name="star"></ion-icon></button>
+      <button ion-button icon-only (click)="favoriteTeam()" *ngIf="!isFavorite"><ion-icon name="star-outline"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -17,5 +20,5 @@
 <ion-content padding>
 
   <ion-item>{{team.iso}}</ion-item>
-  <ion-item>//TODO: Create a list of matches or whatever...</ion-item>
+  <ion-item>//TODO: Create a list of matches ...</ion-item>
 </ion-content>
