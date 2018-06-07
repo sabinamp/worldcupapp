@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 
-import {FirebaseService} from "../../app/firebase-service";
+import {FirestoreProvider} from "../../providers/firestore/firestore";
 import {AngularFirestore} from "angularfire2/firestore";
 import {Team, TeamId} from "../../app/model/team";
 import {Observable} from "rxjs/Observable";
+import {Group} from "../../app/model/group";
 
 
 /**
@@ -18,15 +19,15 @@ import {Observable} from "rxjs/Observable";
 @Component({
   selector: 'page-groups',
   templateUrl: 'groups.html',
+  providers: [FirestoreProvider]
 })
 export class GroupsPage {
-
-  firebaseService: FirebaseService;
+  groups: Observable<Group[]>
   teams: Array<Team>
 
-  constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
-    this.firebaseService = new FirebaseService(angularFireDatabase);
-
+  constructor(public navCtrl: NavController,
+              private firebaseService: FirestoreProvider) {
+    this.groups = this.firebaseService.groups
   }
 
   substractDateLeft(date) {
@@ -50,6 +51,6 @@ export class GroupsPage {
 // what's left is seconds
     var seconds = delta % 60;  // in theory the modulus is not required
 
-  return "starts in " + days + "d " + hours + "h " + minutes + "m "
+    return "starts in " + days + "d " + hours + "h " + minutes + "m "
   }
 }

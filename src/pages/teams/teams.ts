@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 
 import {TeamdetailsPage} from "../teamdetails/teamdetails";
-import {FirebaseService} from "../../app/firebase-service";
+import {FirestoreProvider} from "../../providers/firestore/firestore";
 import {AngularFirestore} from "angularfire2/firestore";
 
 /**
@@ -14,12 +14,12 @@ import {AngularFirestore} from "angularfire2/firestore";
 @Component({
   selector: 'page-teams',
   templateUrl: 'teams.html',
+  providers: [FirestoreProvider]
 })
 export class TeamsPage {
-  firebaseService: FirebaseService;
 
-  constructor(public navCtrl: NavController, angularFireDatabase: AngularFirestore) {
-    this.firebaseService = new FirebaseService(angularFireDatabase);
+  constructor(public navCtrl: NavController,
+              private firebaseService: FirestoreProvider) {
   }
 
   onClick(team) {

@@ -1,14 +1,14 @@
 //TODO: Write abstract methods for Firebase CRUD operations
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "angularfire2/firestore";
 import {Observable} from "rxjs/Observable";
-import {Group} from "./model/group";
-import {Team, TeamId} from "./model/team";
+import {Group} from "../../app/model/group";
+import {Team, TeamId} from "../../app/model/team";
 import {Injectable} from "@angular/core";
-import {Stadium} from "./model/stadium";
+import {Stadium} from "../../app/model/stadium";
 //import {Pro} from "@ionic/pro";
 
 @Injectable()
-export class FirebaseService {
+export class FirestoreProvider {
   //Teams
   teamsRef: AngularFirestoreCollection<Team>;
   teams: Observable<TeamId[]>;

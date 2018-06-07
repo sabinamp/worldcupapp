@@ -5,20 +5,37 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="secondary">
     <ion-title>{{team.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="unfavoriteTeam()" *ngIf="isFavorite"><ion-icon name="star"></ion-icon></button>
-      <button ion-button icon-only (click)="favoriteTeam()" *ngIf="!isFavorite"><ion-icon name="star-outline"></ion-icon></button>
+      <button ion-button icon-only (click)="unfavoriteTeam()" *ngIf="isFavorite">
+        <ion-icon name="star"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="favoriteTeam()" *ngIf="!isFavorite">
+        <ion-icon name="star-outline"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content class="background">
 
-<ion-content padding>
+  <div id="contentDetails">
+    <h1>{{team.name}}</h1>
 
-  <ion-item>{{team.iso}}</ion-item>
-  <ion-item>//TODO: Create a list of matches ...</ion-item>
+    <div *ngIf="team.description != '' || team.description != null">
+      <h2>Description</h2>
+      <p>{{team.description}}</p>
+    </div>
+    <div *ngIf="team.image !='' || team.image !=null">
+      <img src="{{team.image}}">
+    </div>
+    <div *ngIf="team.tastevictory !='' || team.tastevictory !=null">
+      <h2>Taste of Victory</h2>
+      <h3>{{team.tastevictory}}</h3>
+    </div>
+  </div>
+
 </ion-content>
+

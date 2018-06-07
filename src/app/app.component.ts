@@ -8,13 +8,14 @@ import { TeamsPage} from '../pages/teams/teams';
 import { GroupsPage} from '../pages/groups/groups';
 import {StadiumsPage} from '../pages/stadiums/stadiums';
 import {FavoritesPage} from '../pages/favorites/favorites';
+import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = TeamsPage;
   pages: Array<{title: string, component: any}>;
 
   constructor( public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -27,7 +28,7 @@ export class MyApp {
       { title: 'Stadiums', component: StadiumsPage },
       { title: 'Favourite Teams', component: FavoritesPage }
     ];
-    
+
   }
   initializeApp() {
     this.platform.ready().then(() => {

@@ -15,7 +15,7 @@
 
 </ion-header>
 <ion-content class="background">
-  <ion-card *ngFor="let group of firebaseService.groups | async">
+  <ion-card *ngFor="let group of groups | async">
     <h1 text-center text-capitalize class="group-title">Group <strong>{{group.key}}</strong></h1>
     <ion-grid class="match-grid" *ngFor="let match of group.matches">
       <ion-row text-center>

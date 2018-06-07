@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavParams, NavController} from 'ionic-angular';
-import { FavoriteProvider } from '../../providers/favorite/favorite';
+import {FavoriteProvider} from '../../providers/favorite/favorite';
 
 /**
  * Generated class for the TeamdetailsPage page.
@@ -13,12 +13,15 @@ import { FavoriteProvider } from '../../providers/favorite/favorite';
 @Component({
   selector: 'page-teamdetails',
   templateUrl: 'teamdetails.html',
+  providers: [FavoriteProvider]
 })
 export class TeamdetailsPage {
   team: any;
   isFavorite = false;
 
-  constructor(public navContr: NavController, public navParams: NavParams, public favoriteProvider: FavoriteProvider) {
+  constructor(private navContr: NavController,
+              private navParams: NavParams,
+              private favoriteProvider: FavoriteProvider) {
     this.team = this.navParams.data;
     this.favoriteProvider.isFavorite(this.team.id).then(isFav => {
       this.isFavorite = isFav;
@@ -30,12 +33,13 @@ export class TeamdetailsPage {
       this.isFavorite = true;
     });
   }
- 
+
   unfavoriteTeam() {
     this.favoriteProvider.removeFromFavorites(this.team.id).then(() => {
       this.isFavorite = false;
     });
   }
+
   ionViewDidLoad() {
     console.log('TeamdetailsPage Started');
   }
