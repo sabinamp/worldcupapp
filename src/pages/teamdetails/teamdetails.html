@@ -8,10 +8,10 @@
   <ion-navbar color="secondary">
     <ion-title>{{team.name}}</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="unfavoriteTeam()" *ngIf="isFavorite">
+      <button ion-button icon-only color="primary" (click)="unfavoriteTeam()" *ngIf="isFavorite">
         <ion-icon name="star"></ion-icon>
       </button>
-      <button ion-button icon-only (click)="favoriteTeam()" *ngIf="!isFavorite">
+      <button ion-button icon-only color="primary" (click)="favoriteTeam()" *ngIf="!isFavorite">
         <ion-icon name="star-outline"></ion-icon>
       </button>
     </ion-buttons>

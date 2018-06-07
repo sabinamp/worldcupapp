@@ -30,6 +30,7 @@ export class FirestoreProvider {
     this.initializeTeams();
     this.initializeStadiums();
     this.initializeGroups();
+    console.log("Hello angularFirestoreProvider")
   }
 
   initializeTeams() {

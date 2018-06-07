@@ -21,16 +21,17 @@ import {FirestoreProvider} from "../../providers/firestore/firestore";
 export class FavoritesPage {
   favouriteTeams: Team[] = [];
   allteams: Team[];
-
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public favoriteProvider: FavoriteProvider, private firebaseService: FirestoreProvider) {
     this.firebaseService.initializeTeams();
-    this.allteams = this.firebaseService.getTeams();        
+    this.allteams = this.firebaseService.getTeams();  
+           
+   
     favoriteProvider.getAllFavoriteTeams().then((val) => {
       if(val){
-        console.log('Your favourite teams', val);     
-        this.setUserFavouriteTeams(val);
-        console.log(this.favouriteTeams);
+        console.log('Your favourite teams', val);            
+        this.setUserFavouriteTeams(val);        
       }
       else{
         console.log("this user has no favourite teams");
@@ -38,28 +39,27 @@ export class FavoritesPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FavoritesPage');
-    
+  ionViewWillLoad() {
+    console.log('ionViewDidLoad FavoritesPage');    
+  }
+
+  setUserFavouriteTeams(val:any[]){
+      for(let cid of val){  
+         this.favouriteTeams.push(this.transform(this.allteams, parseInt(cid))[0]);                     
+      }       
+      console.log(this.favouriteTeams);    
   }
   getUserFavouriteTeams(){
     return this.favouriteTeams;
      
    }
-  setUserFavouriteTeams(val:any[]){
-      for(let cid of val){  
-         this.favouriteTeams.push(this.transform(this.allteams, cid)[0]);                
-      }        
-  }
-
   onClick(team) {
-    this.navCtrl.push(TeamdetailsPage, team);
+    this.navCtrl.push(TeamdetailsPage, team );
   }
 
   transform(items: Team[], id: number): Team[] {
    /*  if(!items) return [];*/
-    if(!id) return items; 
-    
+    if(!id) return items;     
     return items.filter( it => {
       return it.id === id; 
     });

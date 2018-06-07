@@ -12,8 +12,7 @@ import {FavoriteProvider} from '../../providers/favorite/favorite';
 @IonicPage()
 @Component({
   selector: 'page-teamdetails',
-  templateUrl: 'teamdetails.html',
-  providers: [FavoriteProvider]
+  templateUrl: 'teamdetails.html',  
 })
 export class TeamdetailsPage {
   team: any;

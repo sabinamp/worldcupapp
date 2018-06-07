@@ -7,7 +7,7 @@ import { StadiumsPage } from '../pages/stadiums/stadiums';
 import { HomePage } from '../pages/home/home';
 import { GroupsPage} from "../pages/groups/groups";
 import { FavoritesPage} from "../pages/favorites/favorites";
-import {StadiumsModalPage} from "../pages/stadiums-modal/stadiums-modal";
+//import {StadiumsModalPage} from "../pages/stadiums-modal/stadiums-modal";
 
 // Import the AF2 Module
 import {HttpModule} from "@angular/http";
@@ -15,11 +15,12 @@ import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {FIREBASE_CONFIG} from "./firebase.credentials";
-import {AngularFirestore, AngularFirestoreModule} from "angularfire2/firestore";
+import {AngularFirestoreModule} from "angularfire2/firestore";
 import {TeamsPage} from "../pages/teams/teams";
 import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 import { FavoriteProvider } from '../providers/favorite/favorite';
 import { IonicStorageModule } from '@ionic/storage';
+import { FirestoreProvider } from '../providers/firestore/firestore';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AngularFirestore,
+    FirestoreProvider,
     FavoriteProvider
   ]
 })
