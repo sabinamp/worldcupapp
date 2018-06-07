@@ -15,7 +15,7 @@ import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = TeamsPage;
+  rootPage:any = HomePage;
   pages: Array<{title: string, component: any}>;
 
   constructor( public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

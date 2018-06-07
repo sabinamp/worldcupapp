@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 import { StadiumsPage } from '../pages/stadiums/stadiums';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
 import { GroupsPage} from "../pages/groups/groups";
 import { FavoritesPage} from "../pages/favorites/favorites";
 import {StadiumsModalPage} from "../pages/stadiums-modal/stadiums-modal";
@@ -28,7 +27,6 @@ import { IonicStorageModule } from '@ionic/storage';
     MyApp,
     StadiumsPage,
     HomePage,
-    TabsPage,
     GroupsPage,
     TeamsPage,
     TeamdetailsPage,
@@ -48,8 +46,7 @@ import { IonicStorageModule } from '@ionic/storage';
     StadiumsPage,
     HomePage,
     TeamsPage,
-    TeamdetailsPage,
-    TabsPage,
+    TeamdetailsPage,  
     GroupsPage,
     FavoritesPage
   ],

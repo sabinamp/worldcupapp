@@ -47,8 +47,7 @@ export class FavoritesPage {
      
    }
   setUserFavouriteTeams(val:any[]){
-      for(let cid of val){
-          //this.favouriteTeams.push(item);
+      for(let cid of val){          
           this.favouriteTeams.push(this.transform(this.allteams, cid)[0]);          
       }        
   }

@@ -18,7 +18,7 @@
 
 <ion-content padding class="background">
   <ion-list>    
-    <button ion-item *ngFor="let team of getUserFavouriteTeams()" (click)="onClick(team)">
+    <button ion-item *ngFor="let team of favouriteTeams" (click)="onClick(team)">
       <ion-avatar item-start>
           <img width="28" height="24" src="./assets/imgs/flags/32/{{team.name}}.png">
        </ion-avatar>
