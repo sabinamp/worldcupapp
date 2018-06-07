@@ -17,8 +17,7 @@ import {Stadium} from '../../app/model/stadium';
 export class StadiumsModalPage {
   stadium: Stadium;
 
-  constructor(private navParams: NavParams,
-              public viewCtrl: ViewController) {
+  constructor(private navParams: NavParams,public viewCtrl: ViewController) {
 
   }
 
@@ -26,7 +25,6 @@ export class StadiumsModalPage {
     this.stadium = this.navParams.get('data');
     console.log('ionViewDidLoad StadiumsModalPage');
     console.log(this.stadium);
-
   }
 
   public closeModal() {

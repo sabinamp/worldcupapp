@@ -19,8 +19,8 @@ export class TeamdetailsPage {
   team: any;
   isFavorite = false;
 
-  constructor(private navContr: NavController,
-              private navParams: NavParams,
+  constructor(public navContr: NavController,
+              public navParams: NavParams,
               private favoriteProvider: FavoriteProvider) {
     this.team = this.navParams.data;
     this.favoriteProvider.isFavorite(this.team.id).then(isFav => {

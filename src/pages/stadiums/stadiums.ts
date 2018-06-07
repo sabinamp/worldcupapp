@@ -12,8 +12,7 @@ import {Stadium} from '../../app/model/stadium';
 })
 export class StadiumsPage{
 
-  constructor(public navCtrl: NavController,
-              private modalCtrl: ModalController,
+  constructor(public navCtrl: NavController,private modalCtrl: ModalController,
               private firebaseService: FirestoreProvider) {
   }
 
@@ -21,9 +20,7 @@ export class StadiumsPage{
     this.firebaseService.initializeStadiums();
   }
 
-  public
-
-  openModal(stadium: Stadium) {
+  public openModal(stadium: Stadium) {
     const myModalOptions: ModalOptions = {enableBackdropDismiss: false};
     let modalPage: Modal = this.modalCtrl.create('StadiumsModalPage', {data: stadium}, myModalOptions);
     modalPage.present();

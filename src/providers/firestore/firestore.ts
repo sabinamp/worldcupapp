@@ -53,7 +53,7 @@ export class FirestoreProvider {
       .filter(team => {
         return team.id === id
       });
-  }
+  } 
 
 
   initializeGroups() {
@@ -80,17 +80,14 @@ export class FirestoreProvider {
       });
     });
   }
- /*  initializeStadiums() {
-    this.stadiumsRef = this.getFBReferenceList('/stadiums');
-    this.stadiums = this.stadiumsRef.valueChanges();
+
+  getStadiums(){
+    return this.stadiums;
   }
 
-  getFBReferenceList(path: string) {
-    return this.angularFireStore.collection(path);
-  }*/
-getStadiums(){
-  return this.stadiums;
-}
+  getTeams(){
+    return this.teamArray;
+  }
   getArrayOfKeys(observableList: Observable<any[]>) {
     var keys = [];
     for (var k in observableList) keys.push(k);
