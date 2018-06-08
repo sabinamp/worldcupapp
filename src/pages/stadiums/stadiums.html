@@ -9,17 +9,16 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
-  <ion-list inset>
-    
-    <ion-item *ngFor="let stadium of firebaseService.stadiums | async ">
+<ion-content padding class="background">
+  <ion-list>    
+    <ion-item color="backg" *ngFor="let stadium of firebaseService.stadiums | async ">
         <ion-thumbnail item-start>
-          <img width ="28" height="24" src="./assets/imgs/stadiums/th/{{stadium.id}}_tn.jpg">
+          <img width ="20" height="14" src="./assets/imgs/stadiums/th/{{stadium.id}}_tn.jpg">
         </ion-thumbnail>
         <h2>{{stadium.name}}</h2> 
         <h3>City: {{stadium.city}}</h3>
         
-        <button ion-button color="secondary" icon-left outline item-end (click)="openModal(stadium)">
+        <button ion-button color="light" icon-left outline item-end (click)="openModal(stadium)">
           <ion-icon name="image" item-end></ion-icon>
         View
       </button>
