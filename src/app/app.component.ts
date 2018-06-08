@@ -2,19 +2,19 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import { HomePage } from '../pages/home/home';
 import { TeamsPage} from '../pages/teams/teams';
 import { GroupsPage} from '../pages/groups/groups';
 import {StadiumsPage} from '../pages/stadiums/stadiums';
 import {FavoritesPage} from '../pages/favorites/favorites';
-import {TeamdetailsPage} from "../pages/teamdetails/teamdetails";
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = GroupsPage;
   pages: Array<{title: string, component: any}>;
 
   constructor( public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {

@@ -1,18 +1,18 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import { FirestoreProvider } from '../../providers/firestore/firestore';
+import {FirestoreProvider} from "../../providers/firestore/firestore";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [FirestoreProvider]
 
 })
 export class HomePage {
 
   //mydate: string = ''
 
-  constructor(public navCtrl: NavController, private firestoreProvider: FirestoreProvider) {
-    this.firestoreProvider.initializeTeams();
+  constructor() {
     //this.mydate = "2018-06-14T17:00:00+05:00";
   }
 
