@@ -1,0 +1,36 @@
+page-teamdetails {
+
+  #contentDetails {
+    background-color: rgba(244, 244, 244, 0.93);
+    margin: 40px 10px;
+    padding: 10px 30px !important;
+  }
+
+  #contentDetails h1{
+    font-size: 30px;
+    padding-top: 20px;
+  }
+  #contentDetails h2 {
+    font-size: 25px !important;
+    color: #217b39 !important;
+    margin-bottom: 30px !important;
+  }
+
+  #contentDetails {
+    text-align: justify;
+    text-justify: inter-word !important;
+  }
+  #contentDetails p {
+    font-size: 20px;
+    font-weight: 300;
+  }
+  #contentDetails h3 {
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  #contentDetails img {
+    margin-top: 10px;
+  }
+
+}

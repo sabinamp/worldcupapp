@@ -1,0 +1,28 @@
+<!--
+  TeamsPage layout
+-->
+<ion-header>
+  <ion-navbar  color="secondary">
+    <ion-title>Teams</ion-title>
+    <button ion-button color="dark" menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+  <ion-searchbar (ionInput)="searchItems($event)"></ion-searchbar>
+
+</ion-header>
+
+<ion-content padding class="background">
+
+  <ion-list>
+    <button color="backg" ion-item *ngFor="let team of firebaseService.teams | async" (click)="onClick(team)">
+        <ion-avatar item-start>
+           <img width="28" height="24" src="./assets/imgs/flags/32/{{team.name}}.png">
+        </ion-avatar>
+      
+        {{team.name}}      
+    </button>
+
+  </ion-list>
+</ion-content>
